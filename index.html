@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prédicteur IA – Dépôt</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .console-box {
+      font-family: monospace;
+      background-color: #1a1a1a;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 20px #00ff88;
+      color: #00ff88;
+      height: 250px;
+      overflow-y: auto;
+    }
+    .loading-screen {
+      font-family: monospace;
+      background: #000;
+      color: #00ff88;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      z-index: 50;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    .hidden-screen { display: none; }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+  <div id="loading" class="loading-screen">
+    <p>लोड हुँदैछ... कृपया हामीले तपाईंको अनुभव कन्फिगर नगरुन्जेल पर्खनुहोस्।</p>
+  </div>
+  <div id="mainContent" class="hidden-screen">
+    <header class="w-full bg-gray-800 p-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-green-400">Krishan Hack Signals</h1>
+      <nav class="space-x-4">
+        <a href="#how" class="hover:text-green-400">यसले कसरी काम गर्छ</a>
+        <a href="#games" class="hover:text-green-400">खेलहरू</a>
+        <a href="#start" class="hover:text-green-400">सुरु गर्न</a>
+      </nav>
+    </header>
+    <section class="min-h-screen flex flex-col items-center justify-center px-4 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold mb-6">
+        एआई खेल भविष्यवाणीको साथ वास्तविक पैसा जित्नुहोस्
+      </h2>
+      <div class="mb-4 text-lg font-semibold text-yellow-300">
+        👋 को आधिकारिक सेवामा स्वागत छ र अभिवादन <span class="text-green-400">Krishan</span> !
+      </div>
+      <p class="max-w-xl mb-8 text-gray-300">
+       हाम्रो स्मार्ट एआई मार्फत एभिएटर, माइन्स र पेनाल्टीमा जित्ने हजारौं प्रयोगकर्ताहरूसँग सामेल हुनुहोस्। ९८% शुद्धता, वास्तविक-समय भविष्यवाणीहरू, र तत्काल नगदआउटहरू!
+      </p>
+      <!-- ID input for connection -->
+      <input id="userId" type="text" placeholder="आफ्नो आईडी प्रविष्ट गर्नुहोस्" class="bg-gray-700 text-white p-3 rounded-md mb-4" />
+      <button id="connectButton" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-xl text-lg transition">खाता जडान गर्नुहोस्</button>
+      <!-- Success message -->
+      <div id="connectionSuccess" class="hidden text-green-400 font-bold mt-6">
+        <p>खाता ID : <span id="accountIdDisplay">1234567890</span> सफलतापूर्वक जडान भयो !</p>
+        <p>Status : सक्रिय | १००% भविष्यवाणी शुद्धता | एआई एल्गोरिदमहरूको विश्लेषण गरियो</p>
+        <button id="getSignalButton" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl text-lg transition mt-4">संकेत प्राप्त गर्नुहोस्</button>
+      </div>
+      <!-- Error message for deposit + PROMOCODE block -->
+      <div id="errorBox" class="hidden bg-red-600 p-6 rounded-xl max-w-md mx-auto mt-6">
+        <h2 class="text-xl font-bold mb-2">⚠️ निक्षेप भेटिएन</h2>
+        <p class="mb-4">तपाईंको ब्यालेन्स खाली छ जस्तो देखिन्छ। कृपया जम्मा गर्नुहोस् <strong>3000 NPR</strong> सिग्नलहरूमा पहुँच अनलक गर्न र कमाउन सुरु गर्न !</p>
+        <a href="https://refpa3665.com/L?tag=d_4822207m_59741c_&site=4822207&ad=59741&r=registration"
+" target="_blank" id="depositButton" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg transition">
+          Melbet मा अहिले नै जम्मा गर्नुहोस्
+        </a>
+        <!-- Промокод и напоминание -->
+        <div class="mt-6 bg-red-800 text-white p-4 rounded-lg font-bold text-center">
+           <div class="mb-1 text-lg">   तपाईंको प्रोमो कोड : <span class="bg-black p-1 rounded text-green-400">NPL555</span></div>
+<div>दर्ता गर्न नबिर्सनुहोला <span class="underline">विशिष्टता</span> सबै सुविधाहरू पहुँच गर्न यो प्रोमो कोडको साथ!</div>
+        </div>
+      </div>
+    </section>
+    <!-- Остальное без изменений -->
+    <section class="bg-gray-800 py-12 px-6 text-center">
+      <h3 class="text-2xl font-bold text-green-400 mb-6">आजका विजेताहरू (NPR)</h3>
+      <div class="grid md:grid-cols-2 gap-4 text-left max-w-4xl mx-auto text-sm text-green-300">
+        <p>👤 प्रयोगकर्ता आईडी: १२१८४७३४२२ – २७५३२८ NPR</p>
+        <p>👤 प्रयोगकर्ता आईडी: ९९१२३८४७४१ – २२१९०० NPR</p>
+        <p>👤 प्रयोगकर्ता आईडी: ११८७३३९१२१ – ५२००१ NPR</p>
+        <p>👤 प्रयोगकर्ता आईडी: ११८७३३९१२१ – १५०१३० NPR</p>
+        <p>👤 प्रयोगकर्ता आईडी: ४४१२९००११३ – १३२८५० NPR</p>
+        <p>👤 प्रयोगकर्ता आईडी: ८२८३७२१०९१ – १२८४४० NPR</p>
+        <p>👤 प्रयोगकर्ता आईडी: ७७५१९३७७४२ – १००७०५ NPR</p>
+        <p>👤 प्रयोगकर्ता आईडी: ५५५४९२१८११ – ९८३३० NPR</p>
+        <p>👤 प्रयोगकर्ता आईडी: १९८३२३८७४२ – ८५००० NPR</p>
+        <p>👤 प्रयोगकर्ता आईडी: ३३७७७४९३०१ – ७९२१० NPR</p>
+      </div>
+    </section>
+    <section id="games" class="bg-gray-800 py-12 px-6 text-center">
+      <h3 class="text-2xl font-bold text-green-400 mb-6">समर्थित खेलहरू</h3>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold mb-2">🎮 Aviator</h4>
+          <p class="text-gray-300">विमान उड्नुअघि कहिले अवकाश लिने भनेर भविष्यवाणी गर्नुहोस्! हाम्रो एआईले वास्तविक समयमा प्रवृत्तिहरू पत्ता लगाउँछ.</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold mb-2">💣 Mines</h4>
+          <p class="text-gray-300">बमबाट बच्नुहोस्, जितहरू सङ्कलन गर्नुहोस्। हाम्रो प्रणालीले अधिकतम नाफाको लागि कम जोखिमपूर्ण मार्गहरू फेला पार्छ।.</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold mb-2">🥅 Penalty</h4>
+          <p class="text-gray-300">कहाँ गोली हान्न वा डाइभ लगाउने भनेर जान्नुहोस्। डेटा-संचालित भविष्यवाणीहरूको साथ गोलकिपरलाई हराउनुहोस्.</p>
+        </div>
+      </div>
+    </section>
+    <section id="how" class="bg-gray-900 py-12 px-6 text-center">
+      <h3 class="text-2xl font-bold text-green-400 mb-6">यसले कसरी काम गर्छ</h3>
+      <div class="max-w-3xl mx-auto space-y-4 text-gray-300">
+        <p>📡 हाम्रो एआईले २४/७ प्रत्यक्ष डेटा र खेल इतिहासको विश्लेषण गर्छ।.</p>
+        <p>💡 यसले निरन्तर लाभहरू सक्षम पार्ने ढाँचाहरू पहिचान गर्दछ.</p>
+        <p>📲 तपाईंले वास्तविक समयमा भरपर्दो सिग्नलहरू प्राप्त गर्नुहुन्छ — सिधै तपाईंको उपकरणमा.</p>
+      </div>
+    </section>
+    <section class="bg-black py-12 px-6 text-center">
+      <h3 class="text-xl font-bold text-green-400 mb-4">[Console – Monitoring Log]</h3>
+      <div class="console-box max-w-3xl mx-auto text-left" id="console">
+        <p>[जानकारी] भविष्यवाणी सेवा सक्रिय ✅</p>
+      </div>
+    </section>
+    <footer class="text-center text-gray-500 text-sm py-6">
+      © २०२५ एआई प्रेडिक्टर। मेलबेटसँग सम्बद्ध छैन। जिम्मेवारीपूर्वक प्रयोग गर्नुहोस्।
+    </footer>
+  </div>
+  <script>
+    setTimeout(() => {
+      document.getElementById("loading").classList.add("hidden-screen");
+      document.getElementById("mainContent").classList.remove("hidden-screen");
+    }, 3000);
+    document.getElementById("connectButton").addEventListener("click", () => {
+      const userId = document.getElementById("userId").value;
+      if (userId) {
+        document.getElementById("accountIdDisplay").innerText = userId;
+        document.getElementById("connectionSuccess").classList.remove("hidden");
+        document.getElementById("errorBox").classList.add("hidden");
+      }
+    });
+    document.getElementById("getSignalButton").addEventListener("click", () => {
+      document.getElementById("errorBox").classList.remove("hidden");
+    });
+  </script>
+</body>
+</html>
